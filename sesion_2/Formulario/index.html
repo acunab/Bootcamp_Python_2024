@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Mascotas</title>
+</head>
+<body>
+    <h1>Formulario de Mascotas</h1>
+    <form action="redireccion.html" method="get" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        
+        <label for="rut">RUT:</label><br>
+        <input type="text" id="rut" name="rut" required><br><br>
+        
+        <label for="mascota">Tipo de mascota:</label><br>
+        <select id="mascota" name="mascota" required>
+            <option value="gato">Gato</option>
+            <option value="perro">Perro</option>
+            <option value="caballo">Caballo</option>
+        </select><br><br>
+
+        <label for="nombre_mascota">Nombre de la mascota:</label><br>
+        <input type="text" id="nombre_mascota" name="nombre_mascota" required><br><br>
+        
+        <label for="fecha_nacimiento">Fecha de nacimiento:</label><br>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required><br><br>
+        
+        <label for="imagen_mascota">Subir imagen de la mascota:</label><br>
+        <input type="file" id="imagen_mascota" name="imagen_mascota" accept="image/*" required><br><br>
+        
+        <label for="color_mascota">Color de la mascota:</label><br>
+        <input type="color" id="color_mascota" name="color_mascota" required><br><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
