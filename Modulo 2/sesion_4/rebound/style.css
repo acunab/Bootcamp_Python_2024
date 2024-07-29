@@ -1,0 +1,128 @@
+body {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.rosado {
+    background-color: pink;
+}
+.verde { 
+    background-color: green;
+}
+.azul {
+    background-color: blue;
+}
+.rojo {
+    background-color: red;
+}
+.morado {
+    background-color: blueviolet;
+}
+.gris {
+    background-color: darkgrey;
+}
+@media (max-width: 500px) {
+    .rosado {
+        height: 200px;
+    }
+    .verde { 
+        height: 200px;
+    }
+
+    .azul {
+        height: 50px;
+    }
+    .rojo {
+        display: none;
+    }
+    .morado {
+        display: none;
+    }
+    .gris {
+        height: 300px;
+    }
+}
+@media (min-width: 501px) and (max-width:750px){
+    .rosado {
+        height: 200px;
+        width: 100%;
+    }
+    .verde { 
+        height: 200px;
+        width: 33%;
+        display: inline-block;
+        float: left;
+        margin: 0px;
+        border-right: medium solid white;
+
+    }
+    .azul {
+        height: 200px;
+        width: 33%;
+        display: inline-block;
+        float: left;
+        margin: 0px;
+    }
+    .rojo {
+        height: 200px;
+        width: 33%;
+        display: inline-block;
+        float: left;
+        margin: 0px;
+        border-left: medium solid white;
+    }
+    .morado {
+        height: 400px;
+        width: 60%;
+        display: inline-block;
+        float: left;
+        margin: 0px;
+        border-top: medium solid white;
+    }
+    .gris {
+        height: 400px;
+        width: 39.5%;
+        display: inline-block;
+        float: left;
+        margin: 0px;
+        border-top: medium solid white;
+        border-left: medium solid white;
+    }
+}
+@media (min-width:751px) {
+    .rosado {
+        height: 50px;
+        width: 100%;
+    }
+    .verde { 
+        height: 200px;
+        width: 100%;
+    }
+    .azul {
+        height: 300px;
+        width: 100%;
+    }
+    .rojo {
+        height: 200px;
+        width: 33.34%;
+        display: inline-block;
+        float: left;
+        margin: 0px;
+        
+    }
+    .morado {
+        height: 200px;
+        width: 33.32%;
+        display: inline-block;
+        float: left;
+        margin: 0px;
+    }
+    .gris {
+        height: 200px;
+        width: 33.34%;
+        display: inline-block;
+        float: left;
+        margin: 0px;
+
+    }
+}

@@ -1,0 +1,22 @@
+
+body {
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ancho-maximo {
+    max-width: 1060px!important;
+}
+.circular-img {
+    border-radius: 500px!important;
+    width: 100%;
+    overflow: hidden;
+}
+.profile-img {
+   max-width: 100px;
+}
+.profile-img-header {
+    max-width: 80px;
+ }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Rebound</title>
+</head>
+<body>
+    <h1>Formulario</h1>
+    <form action="gracias.html" method="get" enctype="multipart/form-data">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" required><br><br>
+
+        <label for="direccion">Dirección</label>
+        <input type="text" name="direccion" id="direccion" required><br><br>
+
+        <label for="especialidad">Especialidad</label>
+        <input list="especialidad" id="buscador" >
+        <datalist id="especialidad" name="especialidad" required>
+            <option value="Medicina Interna">
+            <option value="Medicina General">
+            <option value="Traumatología">
+            <option value="Nutricionista">
+        </datalist><br><br>
+
+        <label for="fecha">Fecha</label>
+        <input type="date" required><br><br>
+
+        <label for="hora">Hora</label>
+        <input type="time"><br><br>
+
+        <label for="correo">Correo</label>
+        <input type="text" name="" id=""><br><br>
+        <input type="submit" value="Enviar">
+</body>
+</html>
