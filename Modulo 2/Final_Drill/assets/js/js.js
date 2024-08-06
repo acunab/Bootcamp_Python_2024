@@ -50,6 +50,11 @@ projects.forEach(project => {
     const modalClone = document.querySelector('#modalTemplate').cloneNode(true);
     modalClone.id = project.id;
     modalClone.querySelector('.modal-title').textContent = project.title;
+    const carouselId = 'carousel' + project.id;
+    const carousel = modalClone.querySelector('#carouselTemplate');
+    carousel.id = carouselId;
+    modalClone.querySelector('.carousel-control-prev').setAttribute('data-bs-target', '#' + carouselId);
+    modalClone.querySelector('.carousel-control-next').setAttribute('data-bs-target', '#' + carouselId);
     const carouselInner = modalClone.querySelector('.carousel-inner');
     carouselInner.innerHTML = '';
     project.images.forEach((image, index) => {
@@ -62,3 +67,4 @@ projects.forEach(project => {
     modalClone.querySelector('.modal-body p').textContent = project.description;
     document.body.appendChild(modalClone);
 });
+
