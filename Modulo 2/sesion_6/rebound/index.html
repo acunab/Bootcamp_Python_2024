@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Ejemplo</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Formulario de Ejemplo</h2>
+        <form id="exampleForm" action="pagina2.html" method="POST" target="_blank">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ingresa tu ciudad" required>
+            </div>
+            <div class="form-group">
+                <label for="motivo">Motivo</label>
+                <select class="form-control" id="motivo" name="motivo" required>
+                    <option value="Giro">Giro</option>
+                    <option value="Depósito">Depósito</option>
+                    <option value="Consulta de saldo">Consulta de saldo</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('exampleForm').addEventListener('submit', function(event) {
+            const fields = ['nombre', 'apellido', 'ciudad'];
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value) {
+                    input.value = `Valor por defecto de ${field}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

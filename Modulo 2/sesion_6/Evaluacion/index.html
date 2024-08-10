@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroVia Express</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">AeroVia Express</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ofertas y destinos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Mis viajes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Centro de ayuda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Estado de vuelo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-login" href="#">Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="promo-section p-0 text-start">
+        <div class="row d-flex align-items-center justify-content-end">
+            <div class="col-md-8 ">
+                <h1>¡Vacaciones de verano!</h1>
+                <p>Vuela por Chile y Sudamérica con hasta 40% de descuento. Encuentra paquetes, hoteles, seguros y arriendo de autos en AeroVia Express. <a href="#">Compra aquí</a>.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="img/polynesia.jpg" alt="Promoción de verano" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="form-section p-4">
+        <div class="form-shadow p-3 mb-5 bg-white rounded">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Vuelos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Paquetes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hoteles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Autos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Seguros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Upgrade</a>
+                </li>
+            </ul>
+            <form class="mt-3">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="origin">Origen</label>
+                        <input type="text" class="form-control" id="origin" placeholder="Origen">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="destination">Destino</label>
+                        <input type="text" class="form-control" id="destination" placeholder="Destino">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="departure-date">Fecha Ida</label>
+                        <input type="date" class="form-control" id="departure-date">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="return-date">Fecha Vuelta</label>
+                        <input type="date" class="form-control" id="return-date" disabled>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+    </div>
+        <!-- jQuery and Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
