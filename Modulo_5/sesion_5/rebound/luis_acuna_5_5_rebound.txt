@@ -1,0 +1,56 @@
+-- Paso 1: Crear la tabla "editoriales"
+CREATE TABLE editoriales (
+    codigo INT PRIMARY KEY,
+    nombre VARCHAR(50)
+);
+
+-- Paso 2: Crear la tabla "libros" con llave foránea hacia "editoriales"
+CREATE TABLE libros (
+    codigo INT PRIMARY KEY,
+    titulo VARCHAR(100),
+    codigoeditorial INT,
+    FOREIGN KEY (codigoeditorial) REFERENCES editoriales(codigo)
+);
+
+-- Paso 3: Insertar editoriales y libros
+-- Insertando datos en la tabla "editoriales"
+INSERT INTO editoriales (codigo, nombre) VALUES (1, 'Anaya');
+INSERT INTO editoriales (codigo, nombre) VALUES (2, 'Andina');
+INSERT INTO editoriales (codigo, nombre) VALUES (3, 'S.M.');
+
+-- Insertando datos en la tabla "libros"
+INSERT INTO libros (codigo, titulo, codigoeditorial) VALUES (1, 'Don Quijote de La Mancha I', 1);
+INSERT INTO libros (codigo, titulo, codigoeditorial) VALUES (2, 'El principito', 2);
+INSERT INTO libros (codigo, titulo, codigoeditorial) VALUES (3, 'El príncipe', 3);
+INSERT INTO libros (codigo, titulo, codigoeditorial) VALUES (4, 'Diplomacia', 3);
+INSERT INTO libros (codigo, titulo, codigoeditorial) VALUES (5, 'Don Quijote de La Mancha II', 1);
+
+-- Paso 4: Modificar la tabla "libros" agregando las columnas "autor" y "precio"
+ALTER TABLE libros
+ADD COLUMN autor VARCHAR(50),
+ADD COLUMN precio DECIMAL(10, 2);
+
+-- Paso 5: Actualizar los registros de "libros" con los valores de autor y precio
+UPDATE libros SET autor = 'Miguel de Cervantes', precio = 150 WHERE titulo = 'Don Quijote de La Mancha I';
+UPDATE libros SET autor = 'Antoine SaintExupery', precio = 120 WHERE titulo = 'El principito';
+UPDATE libros SET autor = 'Maquiavelo', precio = 180 WHERE titulo = 'El príncipe';
+UPDATE libros SET autor = 'Henry Kissinger', precio = 170 WHERE titulo = 'Diplomacia';
+UPDATE libros SET autor = 'Miguel de Cervantes', precio = 140 WHERE titulo = 'Don Quijote de La Mancha II';
+
+-- Paso 6: Insertar 2 nuevos libros
+INSERT INTO libros (codigo, titulo, codigoeditorial, autor, precio) VALUES (6, 'Cien años de soledad', 2, 'Gabriel García Márquez', 200);
+INSERT INTO libros (codigo, titulo, codigoeditorial, autor, precio) VALUES (7, '1984', 3, 'George Orwell', 160);
+
+-- Paso 7: Eliminar los libros de la editorial "Anaya" solo en memoria
+BEGIN;
+DELETE FROM libros WHERE codigoeditorial = 1;
+ROLLBACK;
+
+-- Paso 8: Actualizar el nombre de la editorial "Andina" a "Iberlibro" solo en memoria, 
+-- y la editorial "S.M." a "Mountain" en disco usando SAVEPOINT y ROLLBACK TO
+BEGIN;
+UPDATE editoriales SET nombre = 'Iberlibro' WHERE nombre = 'Andina';
+SAVEPOINT antes_cambio_sm;
+UPDATE editoriales SET nombre = 'Mountain' WHERE nombre = 'S.M.';
+ROLLBACK TO antes_cambio_sm;
+COMMIT;

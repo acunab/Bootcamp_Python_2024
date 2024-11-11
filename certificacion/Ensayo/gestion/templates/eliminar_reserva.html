@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Eliminar Reserva</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Eliminar Reserva</h2>
+        <p>¿Estás seguro de que deseas eliminar esta reserva?</p>
+        <p><strong>Cliente:</strong> {{ reserva.cliente.nombre }}</p>
+        <p><strong>Mesa:</strong> {{ reserva.mesa }}</p>
+        <p><strong>Fecha de Reserva:</strong> {{ reserva.fecha_reserva }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'listar_reservas' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

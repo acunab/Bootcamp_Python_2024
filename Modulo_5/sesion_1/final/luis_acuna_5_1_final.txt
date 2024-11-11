@@ -1,0 +1,34 @@
+luisacuna@MacBook-Pro-de-Luis ~ % /Library/PostgreSQL/17/scripts/runpsql.sh; exit
+Server [localhost]: 
+Database [postgres]: 
+Port [5432]: 
+Username [postgres]: 
+Password for user postgres: 
+psql (17.0)
+Type "help" for help.
+
+postgres=# CREATE DATABASE nuevo_curso;
+CREATE DATABASE
+postgres=# CREATE USER usuario1 WITH PASSWORD 'password1';
+CREATE ROLE
+postgres=# CREATE USER usuario2 WITH PASSWORD 'password2';
+CREATE ROLE
+postgres=# CREATE USER usuario3 WITH PASSWORD 'password3';
+CREATE ROLE
+postgres=# \l
+                                                  List of databases
+     Name      |  Owner   | Encoding | Locale Provider | Collate | Ctype | Locale | ICU Rules |   Access privileges   
+---------------+----------+----------+-----------------+---------+-------+--------+-----------+-----------------------
+ mi_base_datos | postgres | UTF8     | libc            | C       | C     |        |           | 
+ nuevo_curso   | postgres | UTF8     | libc            | C       | C     |        |           | 
+ postgres      | postgres | UTF8     | libc            | C       | C     |        |           | 
+ template0     | postgres | UTF8     | libc            | C       | C     |        |           | =c/postgres          +
+               |          |          |                 |         |       |        |           | postgres=CTc/postgres
+ template1     | postgres | UTF8     | libc            | C       | C     |        |           | =c/postgres          +
+               |          |          |                 |         |       |        |           | postgres=CTc/postgres
+(5 rows)
+
+postgres=# nuevo_curso
+postgres-# \c nuevo_curso
+You are now connected to database "nuevo_curso" as user "postgres".
+nuevo_curso-# 

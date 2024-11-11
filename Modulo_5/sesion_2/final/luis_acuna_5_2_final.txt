@@ -1,0 +1,28 @@
+Para crear el Modelo Entidad-Relación (ER) de acuerdo con los requerimientos mencionados en el documento, vamos a identificar las entidades y sus relaciones basadas en los datos proporcionados.
+
+Entidades y sus atributos
+
+	1.	Automóvil
+	•	Atributos: patente, marca, modelo, color, precio_venta
+	2.	Cliente
+	•	Atributos: nombre, correo_electrónico, dirección, RUT, celular
+	•	Nota: Los clientes pueden darse de alta o baja, por lo que podríamos tener un atributo como estado para representar esto.
+	3.	Venta
+	•	Atributos: id_venta, fecha_venta, id_cliente (relación con Cliente), patente (relación con Automóvil)
+	4.	Mantención
+	•	Atributos: id_mantención, fecha_mantención, kilometraje, tipo_mantención, patente (relación con Automóvil)
+
+Relaciones
+
+	1.	Cliente y Automóvil a través de la entidad Venta
+	•	Un cliente puede realizar una o varias compras de automóviles, mientras que cada automóvil tiene un único registro de venta (relación uno a muchos).
+	2.	Automóvil y Mantención
+	•	Cada automóvil puede tener varias mantenciones a lo largo del tiempo, y cada mantención pertenece a un solo automóvil (relación uno a muchos).
+
+Modelo Entidad-Relación (ER)
+
+Con estas entidades y relaciones, el modelo ER quedaría de la siguiente manera:
+
+	•	Cliente → Relación de uno a muchos con Venta.
+	•	Automóvil → Relación de uno a muchos con Venta (a través del atributo patente).
+	•	Automóvil → Relación de uno a muchos con Mantención (para llevar el historial de mantenciones).

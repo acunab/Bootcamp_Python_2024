@@ -1,0 +1,85 @@
+Para aplicar la Primera Forma Normal (1FN), Segunda Forma Normal (2FN) y Tercera Forma Normal (3FN) en esta tabla, vamos a descomponerla para eliminar la redundancia y asegurar la integridad de los datos.
+
+1FN (Primera Forma Normal)
+
+La 1FN requiere que:
+
+	•	Todos los valores en una columna sean atómicos (sin listas o grupos de datos).
+	•	Cada campo debe contener solo un valor y cada registro debe ser único.
+
+En la tabla de órdenes, cada fila tiene valores atómicos, así que cumple con la 1FN. Sin embargo, para cumplir con las formas normales más avanzadas, es necesario descomponer las dependencias funcionales.
+
+2FN (Segunda Forma Normal)
+
+La 2FN exige que:
+
+	•	La tabla esté en 1FN.
+	•	No haya dependencias parciales; es decir, los atributos deben depender completamente de la clave primaria (en este caso, IdOrden y Código en conjunto podrían ser una clave primaria compuesta).
+
+Para aplicar la 2FN, separamos las tablas en varias entidades:
+
+	1.	Órdenes: Detalles de cada orden.
+	2.	Clientes: Información sobre los clientes.
+	3.	Artículos: Detalles de los artículos.
+
+Tablas resultantes:
+
+	1.	Tabla Órdenes
+
+IdOrden	Fecha	IdCliente
+2301	23/02/2020	101
+2302	25/02/2020	107
+2303	27/02/2020	110
+
+
+	2.	Tabla Clientes
+
+IdCliente	Cliente	Ciudad
+101	Martin	Santiago
+107	Herman	Valparaíso
+110	Pedro	Concepción
+
+
+	3.	Tabla Artículos
+
+Código	Articulo	Precio
+3786	Red	35,00
+4011	Raqueta	65,00
+9132	Paq-3	4,75
+5794	Paq-6	5,00
+3141	Funda	10,00
+
+
+	4.	Tabla Detalles de Órdenes (relación entre órdenes y artículos)
+
+IdOrden	Código	Cantidad
+2301	3786	3
+2301	4011	6
+2301	9132	8
+2302	5794	4
+2303	4011	2
+2303	3141	2
+
+
+
+3FN (Tercera Forma Normal)
+
+Para cumplir con la 3FN:
+
+	•	La tabla debe estar en 2FN.
+	•	Todos los atributos no clave deben depender únicamente de la clave primaria y no de otros atributos no clave (evitar dependencias transitivas).
+
+Con la separación en tablas realizada en 2FN, ya hemos cumplido con la 3FN, pues cada tabla tiene una clave primaria clara y no tiene dependencias transitivas.
+
+Resultado Final en 3FN
+
+	1.	Tabla Órdenes
+	•	Atributos: IdOrden, Fecha, IdCliente
+	2.	Tabla Clientes
+	•	Atributos: IdCliente, Cliente, Ciudad
+	3.	Tabla Artículos
+	•	Atributos: Código, Articulo, Precio
+	4.	Tabla Detalles de Órdenes
+	•	Atributos: IdOrden, Código, Cantidad
+
+Este diseño elimina la redundancia, asegura la integridad de los datos y está en la Tercera Forma Normal (3FN).

@@ -1,0 +1,143 @@
+A continuación, documento paso a paso la conversación, siguiendo el ejercicio solicitado y detallando cada una de las sentencias SQL que se desarrollaron:
+
+Inicio de la conversación y carga de archivos
+
+	1.	Primero, subí dos archivos CSV: peliculas.csv y reparto.csv. A continuación, revisé el contenido de estos archivos para entender la estructura de los datos y los nombres de los atributos en cada tabla.
+	•	peliculas.csv incluye las columnas: id, pelicula, estreno y director.
+	•	reparto.csv incluye las columnas: id_pelicula y actor.
+
+Ejercicio: Sentencias SQL
+
+Tras analizar los archivos, procedí a realizar las sentencias SQL solicitadas para completar el ejercicio:
+
+	1.	Crear la base de datos llamada peliculas:
+
+CREATE DATABASE peliculas;
+
+
+	2.	Crear las tablas peliculas y reparto:
+
+-- Cambiar a la base de datos `peliculas`
+\c peliculas
+
+-- Crear tabla `peliculas`
+CREATE TABLE peliculas (
+    id SERIAL PRIMARY KEY,
+    pelicula VARCHAR(255),
+    estreno INT,
+    director VARCHAR(255)
+);
+
+-- Crear tabla `reparto`
+CREATE TABLE reparto (
+    id SERIAL PRIMARY KEY,
+    id_pelicula INT REFERENCES peliculas(id),
+    actor VARCHAR(255)
+);
+
+
+	3.	Cargar los archivos CSV en las tablas correspondientes:
+
+-- Cargar datos en la tabla `peliculas`
+\COPY peliculas(id, pelicula, estreno, director) FROM '/mnt/data/peliculas.csv' WITH CSV HEADER;
+
+-- Cargar datos en la tabla `reparto`
+\COPY reparto(id_pelicula, actor) FROM '/mnt/data/reparto.csv' WITH CSV HEADER;
+
+
+	4.	Listar todos los actores de la película “Titanic”:
+
+SELECT p.pelicula, p.estreno, p.director, r.actor
+FROM peliculas p
+JOIN reparto r ON p.id = r.id_pelicula
+WHERE p.pelicula = 'Titanic';
+
+
+	5.	Listar los 10 directores más populares:
+
+SELECT director, COUNT(*) AS cantidad_peliculas
+FROM peliculas
+GROUP BY director
+ORDER BY cantidad_peliculas DESC
+LIMIT 10;
+
+
+	6.	Contar la cantidad de actores distintos:
+
+SELECT COUNT(DISTINCT actor) AS cantidad_actores
+FROM reparto;
+
+
+	7.	Listar las películas estrenadas entre 1990 y 1999:
+
+SELECT pelicula
+FROM peliculas
+WHERE estreno BETWEEN 1990 AND 1999
+ORDER BY pelicula ASC;
+
+
+	8.	Listar los actores de la película más reciente:
+
+SELECT p.pelicula, r.actor
+FROM peliculas p
+JOIN reparto r ON p.id = r.id_pelicula
+WHERE p.estreno = (SELECT MAX(estreno) FROM peliculas);
+
+
+	9.	Insertar una película solo en memoria y otra en el disco duro:
+
+-- Solo en memoria (no persistente)
+BEGIN;
+INSERT INTO peliculas (pelicula, estreno, director) VALUES ('Nueva Pelicula Memoria', 2023, 'Director Memoria');
+
+-- En disco duro (persistente)
+INSERT INTO peliculas (pelicula, estreno, director) VALUES ('Nueva Pelicula Disco', 2023, 'Director Disco');
+COMMIT;
+
+
+	10.	Actualizar 5 directores y revertir los cambios usando ROLLBACK:
+
+BEGIN;
+UPDATE peliculas SET director = 'Director Actualizado 1' WHERE id = 1;
+UPDATE peliculas SET director = 'Director Actualizado 2' WHERE id = 2;
+UPDATE peliculas SET director = 'Director Actualizado 3' WHERE id = 3;
+UPDATE peliculas SET director = 'Director Actualizado 4' WHERE id = 4;
+UPDATE peliculas SET director = 'Director Actualizado 5' WHERE id = 5;
+ROLLBACK;
+
+
+	11.	Insertar 3 actores a la película “Rambo” utilizando SAVEPOINT:
+
+BEGIN;
+SAVEPOINT antes_de_insertar_actores;
+INSERT INTO reparto (id_pelicula, actor) VALUES ((SELECT id FROM peliculas WHERE pelicula = 'Rambo'), 'Actor 1');
+INSERT INTO reparto (id_pelicula, actor) VALUES ((SELECT id FROM peliculas WHERE pelicula = 'Rambo'), 'Actor 2');
+INSERT INTO reparto (id_pelicula, actor) VALUES ((SELECT id FROM peliculas WHERE pelicula = 'Rambo'), 'Actor 3');
+COMMIT;
+
+
+	12.	Eliminar películas estrenadas en 2008 solo en memoria:
+
+BEGIN;
+DELETE FROM peliculas WHERE estreno = 2008;
+ROLLBACK;
+
+
+	13.	Insertar 2 actores para cada película de 2001:
+
+INSERT INTO reparto (id_pelicula, actor)
+SELECT id, 'Actor 1' FROM peliculas WHERE estreno = 2001;
+
+INSERT INTO reparto (id_pelicula, actor)
+SELECT id, 'Actor 2' FROM peliculas WHERE estreno = 2001;
+
+
+	14.	Actualizar el nombre de la película “King Kong” a “Donkey Kong” sin persistir en disco:
+
+BEGIN;
+UPDATE peliculas SET pelicula = 'Donkey Kong' WHERE pelicula = 'King Kong';
+ROLLBACK;
+
+
+
+Estas son todas las sentencias desde el inicio de la conversación hasta el punto 17 del ejercicio.

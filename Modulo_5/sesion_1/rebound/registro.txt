@@ -1,0 +1,18 @@
+Last login: Sat Nov  2 00:56:32 on ttys012
+/Library/PostgreSQL/17/scripts/runpsql.sh; exit                                 
+luisacuna@MacBook-Pro-de-Luis ~ % /Library/PostgreSQL/17/scripts/runpsql.sh; exit
+Server [localhost]: 
+Database [postgres]: 
+Port [5432]: 
+Username [postgres]: 
+Password for user postgres: 
+psql (17.0)
+Type "help" for help.
+
+postgres=# CREATE DATABASE mi_base_datos;
+CREATE DATABASE
+postgres=# CREATE USER nuevo_usuario WITH PASSWORD 'mi_contraseña';
+CREATE ROLE
+postgres=# \c mi_base_datos
+You are now connected to database "mi_base_datos" as user "postgres".
+mi_base_datos=# 

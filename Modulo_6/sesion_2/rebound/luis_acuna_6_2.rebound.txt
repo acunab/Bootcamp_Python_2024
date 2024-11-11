@@ -1,0 +1,185 @@
+Aquí tienes una documentación detallada de los pasos que seguiste para instalar y crear un entorno virtual utilizando virtualenv en lugar de mkvirtualenv, adaptado para macOS:
+
+Documentación para la Creación de Entornos Virtuales en macOS usando virtualenv
+
+Requisitos Previos
+
+	1.	Python: Asegúrate de tener Python instalado (usualmente ya está incluido en macOS).
+	2.	PIP: Para instalar paquetes, como virtualenv, necesitas tener pip instalado.
+
+Puedes verificar la instalación de Python y pip con:
+
+python3 --version  # Para ver la versión de Python
+pip --version      # Para ver la versión de PIP
+
+Instalación y Creación de un Entorno Virtual
+
+	1.	Instalar virtualenv:
+Ejecuta el siguiente comando para instalar virtualenv con pip:
+
+pip install virtualenv
+
+Esto instalará virtualenv, que permite crear y gestionar entornos virtuales en Python.
+
+	2.	Crear un Entorno Virtual:
+Una vez instalado virtualenv, puedes crear un entorno virtual en la carpeta del proyecto con:
+
+virtualenv proyecto_django
+
+Esto creará un entorno virtual llamado proyecto_django.
+
+	3.	Activar el Entorno Virtual:
+Para activar el entorno virtual y comenzar a trabajar dentro de él, usa el siguiente comando:
+
+source proyecto_django/bin/activate
+
+Verás que el nombre del entorno (proyecto_django) aparece al inicio de la línea de comandos, lo que indica que el entorno está activado.
+
+	4.	Verificar Paquetes Instalados en el Entorno Virtual:
+Para ver los paquetes instalados en tu entorno virtual recién creado, asegúrate de que esté activado y luego usa:
+
+pip list
+
+Esto mostrará una lista de los paquetes instalados (inicialmente estará vacía).
+
+	5.	Instalar Django en el Entorno Virtual:
+Con el entorno activado, instala Django con:
+
+pip install django
+
+
+	6.	Verificar la Versión de Django:
+Una vez instalado Django, puedes verificar la versión con:
+
+django-admin --version
+
+
+	7.	Mostrar el Comando de Ayuda de pip:
+Para ver el comando de ayuda y las opciones de pip, utiliza:
+
+pip --help
+
+
+
+Desactivar el Entorno Virtual
+
+Cuando termines de trabajar en el entorno virtual, puedes desactivarlo con:
+
+deactivate
+
+PEGO EL HISTORIAL
+
+practica_orm_djangoluisacuna@MacBook-Pro-de-Luis rebound % export PS1="%n@%m %1~ %# "
+luisacuna@MacBook-Pro-de-Luis rebound % virtualenv proyecto_django
+.created virtual environment CPython3.13.0.final.0-64 in 194ms
+  creator CPython3Posix(dest=/Users/luisacuna/Library/CloudStorage/OneDrive-Personal/BOOTCAMP/html/Bootcamp_Python/Modulo_6/sesion 2/rebound/proyecto_django, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, via=copy, app_data_dir=/Users/luisacuna/Library/Application Support/virtualenv)
+    added seed packages: pip==24.3.1
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+luisacuna@MacBook-Pro-de-Luis rebound % .source proyecto_django/bin/activate
+zsh: command not found: .source
+luisacuna@MacBook-Pro-de-Luis rebound % source proyecto_django/bin/activate
+(proyecto_django) luisacuna@MacBook-Pro-de-Luis rebound % # o
+source proyecto_django/bin/activate
+zsh: command not found: #
+(proyecto_django) luisacuna@MacBook-Pro-de-Luis rebound % # o
+source proyecto_django/bin/activatesource proyecto_django/bin/activate
+zsh: command not found: #
+source: no such file or directory: proyecto_django/bin/activatesource
+(proyecto_django) luisacuna@MacBook-Pro-de-Luis rebound % source proyecto_django/bin/activate
+(proyecto_django) luisacuna@MacBook-Pro-de-Luis rebound % pip list
+Package Version
+------- -------
+pip     24.3.1
+(proyecto_django) luisacuna@MacBook-Pro-de-Luis rebound % pip install django
+Collecting django
+  Downloading Django-5.1.3-py3-none-any.whl.metadata (4.2 kB)
+Collecting asgiref<4,>=3.8.1 (from django)
+  Using cached asgiref-3.8.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting sqlparse>=0.3.1 (from django)
+  Using cached sqlparse-0.5.1-py3-none-any.whl.metadata (3.9 kB)
+Downloading Django-5.1.3-py3-none-any.whl (8.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 32.0 MB/s eta 0:00:00
+Using cached asgiref-3.8.1-py3-none-any.whl (23 kB)
+Using cached sqlparse-0.5.1-py3-none-any.whl (44 kB)
+Installing collected packages: sqlparse, asgiref, django
+Successfully installed asgiref-3.8.1 django-5.1.3 sqlparse-0.5.1
+(proyecto_django) luisacuna@MacBook-Pro-de-Luis rebound % django-admin --version
+5.1.2
+(proyecto_django) luisacuna@MacBook-Pro-de-Luis rebound % pip --help
+
+Usage:   
+  pip <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  inspect                     Inspect the python environment.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  cache                       Inspect and manage pip's wheel cache.
+  index                       Inspect information available from package indexes.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  debug                       Show information useful for debugging.
+  help                        Show help for commands.
+
+General Options:
+  -h, --help                  Show help.
+  --debug                     Let unhandled exceptions propagate outside the main
+                              subroutine, instead of logging them to stderr.
+  --isolated                  Run pip in an isolated mode, ignoring environment
+                              variables and user configuration.
+  --require-virtualenv        Allow pip to only run in a virtual environment; exit
+                              with an error otherwise.
+  --python <python>           Run pip with the specified Python interpreter.
+  -v, --verbose               Give more output. Option is additive, and can be
+                              used up to 3 times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output. Option is additive, and can be
+                              used up to 3 times (corresponding to WARNING, ERROR,
+                              and CRITICAL logging levels).
+  --log <path>                Path to a verbose appending log.
+  --no-input                  Disable prompting for input.
+  --keyring-provider <keyring_provider>
+                              Enable the credential lookup via the keyring library
+                              if user input is allowed. Specify which mechanism to
+                              use [disabled, import, subprocess]. (default:
+                              disabled)
+  --proxy <proxy>             Specify a proxy in the form
+                              scheme://[user:passwd@]proxy.server:port.
+  --retries <retries>         Maximum number of retries each connection should
+                              attempt (default 5 times).
+  --timeout <sec>             Set the socket timeout (default 15 seconds).
+  --exists-action <action>    Default action when a path already exists: (s)witch,
+                              (i)gnore, (w)ipe, (b)ackup, (a)bort.
+  --trusted-host <hostname>   Mark this host or host:port pair as trusted, even
+                              though it does not have valid or any HTTPS.
+  --cert <path>               Path to PEM-encoded CA certificate bundle. If
+                              provided, overrides the default. See 'SSL
+                              Certificate Verification' in pip documentation for
+                              more information.
+  --client-cert <path>        Path to SSL client certificate, a single file
+                              containing the private key and the certificate in
+                              PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine whether a
+                              new version of pip is available for download.
+                              Implied with --no-index.
+  --no-color                  Suppress colored output.
+  --no-python-version-warning
+                              Silence deprecation warnings for upcoming
+                              unsupported Pythons.
+  --use-feature <feature>     Enable new functionality, that may be backward
+                              incompatible.
+  --use-deprecated <feature>  Enable deprecated functionality, that will be
+                              removed in the future.
+(proyecto_django) luisacuna@MacBook-Pro-de-Luis rebound % 
