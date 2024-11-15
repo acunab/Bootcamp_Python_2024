@@ -1,0 +1,37 @@
+{% extends 'gestion/base.html' %}
+    {% block title %}Reporte de Ventas{% endblock %}
+    {% block content %}
+    <h2>Reporte de Ventas</h2>
+    <form method="get">
+        <label for="fecha_inicio">Fecha Inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio">
+        <label for="fecha_fin">Fecha Fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Orden</th>
+                <th>Cliente</th>
+                <th>Empleado</th>
+                <th>Fecha de Creación</th>
+                <th>Estado</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+            <tr>
+                <td>{{ venta.orden_servicio.id }}</td>
+                <td>{{ venta.orden_servicio.cliente.nombre }}</td>
+                <td>{{ venta.orden_servicio.empleado.username }}</td>
+                <td>{{ venta.orden_servicio.fecha_creacion }}</td>
+                <td>{{ venta.orden_servicio.estado }}</td>
+                <td>{{ venta.monto_total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Total Ventas: {{ total_ventas }}</h3>
+    {% endblock %}

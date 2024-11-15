@@ -1,0 +1,6 @@
+{% extends 'gestion/base.html' %}
+    {% block title %}Generar Orden de Servicio{% endblock %}
+    {% block content %}
+    <h2>Generar Orden de Servicio</h2>
+    <form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit" class="btn btn-success">Generar Orden</button></form>
+    {% endblock %}

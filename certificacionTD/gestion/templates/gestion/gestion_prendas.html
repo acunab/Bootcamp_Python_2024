@@ -1,0 +1,24 @@
+{% extends 'gestion/base.html' %}
+    {% block title %}Gestión de Prendas{% endblock %}
+    {% block content %}
+    <h2>Gestión de Prendas</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tipo de Prenda</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prenda in prendas %}
+            <tr>
+                <td>{{ prenda.tipo_prenda }}</td>
+                <td>{{ prenda.precio }}</td>
+                <td>{{ prenda.descripcion }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'agregar_prenda' %}" class="btn btn-primary">Agregar Prenda</a>
+    {% endblock %}

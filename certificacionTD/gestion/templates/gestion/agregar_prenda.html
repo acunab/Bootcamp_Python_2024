@@ -1,0 +1,6 @@
+{% extends 'gestion/base.html' %}
+{% block title %}Agregar Prenda{% endblock %}
+{% block content %}
+<h2>Agregar Prenda</h2>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit" class="btn btn-success">Agregar Prenda</button></form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% block title %}Actualizar Estado de Orden{% endblock %}
+{% block content %}
+<h2>Actualizar Estado de Orden</h2>
+<form method="post">{% csrf_token %}
+    <label for="estado">Estado:</label>
+    <select id="estado" name="estado">
+        <option value="pendiente" {% if orden.estado == "pendiente" %}selected{% endif %}>Pendiente</option>
+        <option value="en_proceso" {% if orden.estado == "en_proceso" %}selected{% endif %}>En Proceso</option>
+        <option value="completada" {% if orden.estado == "completada" %}selected{% endif %}>Completada</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+{% endblock %}

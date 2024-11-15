@@ -1,0 +1,8 @@
+{% extends 'gestion/base.html' %}
+{% block title %}Cobrar Orden de Servicio{% endblock %}
+{% block content %}
+<h2>Cobrar Orden de Servicio</h2>
+<p>Cliente: {{ orden.cliente.nombre }}</p>
+<p>Total a Pagar: ${{ orden.total }}</p>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit" class="btn btn-success">Cobrar</button></form>
+{% endblock %}
